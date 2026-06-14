@@ -1,9 +1,9 @@
-# 🌐 Enterprise Network HQ-Branch Simulation
-### Tugas Modul 5 — Computer Engineering Lab M-IoT
 
-> Simulasi jaringan enterprise yang menghubungkan kantor pusat **Jakarta (HQ)** dan kantor cabang **Surabaya (Branch)** menggunakan GRE Tunnel, OSPF, VRRP, dan berbagai teknologi jaringan lainnya di atas platform **PNETLab**.
 
----
+
+
+
+
 
 ## 📋 Daftar Isi
 
@@ -39,9 +39,8 @@ Kedua site dihubungkan menggunakan **GRE Tunnel** antar FortiGate, dengan **OSPF
 ---
 
 ## 🗺️ Topologi Jaringan
+<img width="1278" height="732" alt="Screenshot 2026-06-14 055013" src="https://github.com/user-attachments/assets/cab9a957-90e4-4291-a2e2-3cab57ba16b0" />
 
-<!-- Tempel screenshot topologi PNETLab di sini -->
-![Topologi Jaringan](screenshots/topology.png)
 
 ---
 
@@ -190,13 +189,14 @@ Kedua site dihubungkan menggunakan **GRE Tunnel** antar FortiGate, dengan **OSPF
 
 **1. `show vlan brief`**
 
-<!-- Tempel screenshot show vlan brief di sini -->
-![show vlan brief](screenshots/m1-show-vlan-brief.png)
+
+
+<img width="1944" height="1162" alt="Screenshot 2026-06-14 014917" src="https://github.com/user-attachments/assets/2ab2d8bd-3d64-4e30-8313-24786ccf4618" />
+
 
 **2. `show interfaces trunk`**
 
-<!-- Tempel screenshot show interfaces trunk di sini -->
-![show interfaces trunk](screenshots/m1-show-interfaces-trunk.png)
+<img width="2002" height="1218" alt="Screenshot 2026-06-14 015019" src="https://github.com/user-attachments/assets/4074d255-28a9-4176-9c6b-d9fc2175ec54" />
 
 ---
 
@@ -205,26 +205,10 @@ Kedua site dihubungkan menggunakan **GRE Tunnel** antar FortiGate, dengan **OSPF
 **Hal yang dikonfigurasi:** Sub-interface VLAN 10/20/60, VRRP (Master VLAN 10 & 60), DHCP Relay ke Ubuntu Server, link ke FortiGate Jakarta.
 
 ### Bukti
+**1. Ping dari Cisco Router ke FortiGate Jakarta (`ping 10.10.100.1`)**
+<img width="2016" height="1224" alt="Screenshot 2026-06-14 015028" src="https://github.com/user-attachments/assets/29f79062-8c26-47af-b8b7-fc3a49331763" />
 
-**1. `show ip interface brief`**
 
-<!-- Tempel screenshot show ip interface brief di sini -->
-![show ip interface brief](screenshots/m2-show-ip-int-brief.png)
-
-**2. `show vrrp brief`**
-
-<!-- Tempel screenshot show vrrp brief di sini -->
-![show vrrp brief](screenshots/m2-show-vrrp-brief.png)
-
-**3. Screenshot konfigurasi subinterface**
-
-<!-- Tempel screenshot konfigurasi subinterface di sini -->
-![konfigurasi subinterface](screenshots/m2-subinterface-config.png)
-
-**4. Ping dari Cisco Router ke FortiGate Jakarta (`ping 10.10.100.1`)**
-
-<!-- Tempel screenshot ping di sini -->
-![ping ke FortiGate Jakarta](screenshots/m2-ping-fortigate.png)
 
 ---
 
@@ -234,30 +218,23 @@ Kedua site dihubungkan menggunakan **GRE Tunnel** antar FortiGate, dengan **OSPF
 
 ### Bukti
 
-**1. `/ip address print`**
+**1. `/ip address print dan interface vrrp print`**
 
-<!-- Tempel screenshot /ip address print di sini -->
-![ip address print](screenshots/m3-ip-address-print.png)
+<img width="2220" height="1226" alt="Screenshot 2026-06-14 015609" src="https://github.com/user-attachments/assets/aa51c079-8430-4054-9d22-dd362232719c" />
 
-**2. `/interface vrrp print`**
 
-<!-- Tempel screenshot /interface vrrp print di sini -->
-![interface vrrp print](screenshots/m3-vrrp-print.png)
 
-**3. `/ip dhcp-relay print`**
+**3. `/ip dhcp-relay print ip route print`**
 
-<!-- Tempel screenshot /ip dhcp-relay print di sini -->
-![dhcp relay print](screenshots/m3-dhcp-relay-print.png)
 
-**4. `/ip route print`**
+<img width="2108" height="1164" alt="Screenshot 2026-06-14 015626" src="https://github.com/user-attachments/assets/4b42d639-fe12-4554-be60-c195986aa950" />
 
-<!-- Tempel screenshot /ip route print di sini -->
-![ip route print](screenshots/m3-ip-route-print.png)
+
+
 
 **5. Ping dari MikroTik ke FortiGate Jakarta (`ping 10.10.101.1`)**
 
-<!-- Tempel screenshot ping di sini -->
-![ping ke FortiGate Jakarta](screenshots/m3-ping-fortigate.png)
+<img width="2358" height="1232" alt="Screenshot 2026-06-14 015652" src="https://github.com/user-attachments/assets/473ec849-d9c3-4815-a1ac-14c9c0708f66" />
 
 ---
 
@@ -265,29 +242,21 @@ Kedua site dihubungkan menggunakan **GRE Tunnel** antar FortiGate, dengan **OSPF
 
 **Hal yang dikonfigurasi:** IP static 192.168.60.10/24, ISC-DHCP Server (VLAN 10 & 20), Nginx Web Server.
 
-> ⚠️ **Troubleshooting:** Hubungkan Ubuntu ke network management dulu, install paket, baru pindah ke Switch VLAN 60 dan set IP static.
 
 ### Bukti
 
-**1. `ip a`**
+**1. `ip a` dan `ip route`**
+<img width="2880" height="1250" alt="Screenshot 2026-06-14 020724" src="https://github.com/user-attachments/assets/68315b9f-50b8-4757-a162-2b8e9f115d38" />
 
-<!-- Tempel screenshot ip a di sini -->
-![ip a](screenshots/m4-ip-a.png)
-
-**2. `ip route`**
-
-<!-- Tempel screenshot ip route di sini -->
-![ip route](screenshots/m4-ip-route.png)
 
 **3. Isi file `/etc/dhcp/dhcpd.conf`**
 
-<!-- Tempel screenshot isi dhcpd.conf di sini -->
-![dhcpd.conf](screenshots/m4-dhcpd-conf.png)
+<img width="1302" height="1234" alt="Screenshot 2026-06-14 015707" src="https://github.com/user-attachments/assets/c8f64cfc-ac02-474a-b773-51a54115e54f" />
+
 
 **4. `ping 8.8.8.8`**
 
-<!-- Tempel screenshot ping 8.8.8.8 di sini -->
-![ping 8.8.8.8](screenshots/m4-ping-internet.png)
+<img width="960" height="1236" alt="Screenshot 2026-06-14 015753" src="https://github.com/user-attachments/assets/9278865b-b585-42b7-83b2-817e4f6aea78" />
 
 ---
 
@@ -299,38 +268,23 @@ Kedua site dihubungkan menggunakan **GRE Tunnel** antar FortiGate, dengan **OSPF
 
 **1. `get system interface physical`**
 
-<!-- Tempel screenshot get system interface physical di sini -->
-![get system interface physical](screenshots/m5-interface-physical.png)
+<img width="1212" height="1222" alt="Screenshot 2026-06-14 015640" src="https://github.com/user-attachments/assets/5eb1578e-1f92-4457-99cc-2fd9e40d4903" />
 
 **2. `get router info routing-table all`**
 
-<!-- Tempel screenshot routing table di sini -->
-![routing table all](screenshots/m5-routing-table-all.png)
+<img width="1864" height="1224" alt="Screenshot 2026-06-14 015700" src="https://github.com/user-attachments/assets/36fe327c-245d-4547-bc96-208e96ea85be" />
+
 
 **3. Screenshot firewall policy**
 
-<!-- Tempel screenshot firewall policy di sini -->
-![firewall policy](screenshots/m5-firewall-policy.png)
 
-**4. `execute ping 8.8.8.8`**
+<img width="1056" height="1224" alt="Screenshot 2026-06-14 015807" src="https://github.com/user-attachments/assets/c060868f-6e96-436d-b37e-9457f26bc9a8" />
+<img width="2454" height="1164" alt="Screenshot 2026-06-14 015819" src="https://github.com/user-attachments/assets/a504f8b5-abb2-4e6b-9169-53be1d400546" />
 
-<!-- Tempel screenshot ping 8.8.8.8 di sini -->
-![ping 8.8.8.8](screenshots/m5-ping-internet.png)
+**4. `execute ping 8.8.8.8`,  `execute ping 172.16.0.2`, `get router info ospf neighbor` dan `get router info routing-table ospf`**
 
-**5. `execute ping 172.16.0.2` (IP tunnel Surabaya)**
+<img width="790" height="1224" alt="Screenshot 2026-06-14 015828" src="https://github.com/user-attachments/assets/18d54ca3-1bf6-40c4-be69-2c79ab6fc7d7" />
 
-<!-- Tempel screenshot ping tunnel di sini -->
-![ping tunnel Surabaya](screenshots/m5-ping-tunnel.png)
-
-**6. `get router info ospf neighbor`**
-
-<!-- Tempel screenshot ospf neighbor di sini -->
-![ospf neighbor](screenshots/m5-ospf-neighbor.png)
-
-**7. `get router info routing-table ospf`**
-
-<!-- Tempel screenshot routing table ospf di sini -->
-![routing table ospf](screenshots/m5-routing-table-ospf.png)
 
 ---
 
@@ -338,34 +292,19 @@ Kedua site dihubungkan menggunakan **GRE Tunnel** antar FortiGate, dengan **OSPF
 
 **Hal yang dikonfigurasi:** IP ether2 & ether3, DHCP client ether1 (Cloud NAT), default route, NAT masquerade.
 
-> ℹ️ MikroTik ISP **tidak** menjalankan OSPF. IP ether1 bersifat dinamis (bisa berbeda setiap sesi).
 
 ### Bukti
 
-**1. `/ip address print`**
+**1`/ip address print
+/ip route print
+/ip firewall nat print
+ping 8.8.8.8
+ping fortigate Jakarta
+ping fortigate Surabaya`**
 
-<!-- Tempel screenshot /ip address print di sini -->
-![ip address print](screenshots/m6-ip-address-print.png)
+<img width="908" height="1234" alt="Screenshot 2026-06-14 015841" src="https://github.com/user-attachments/assets/b2cac863-ad6a-4fbe-8feb-41613d53383b" />
 
-**2. `/ip route print`**
 
-<!-- Tempel screenshot /ip route print di sini -->
-![ip route print](screenshots/m6-ip-route-print.png)
-
-**3. `/ip firewall nat print`**
-
-<!-- Tempel screenshot firewall nat di sini -->
-![firewall nat print](screenshots/m6-firewall-nat.png)
-
-**4. `ping 8.8.8.8`**
-
-<!-- Tempel screenshot ping 8.8.8.8 di sini -->
-![ping 8.8.8.8](screenshots/m6-ping-internet.png)
-
-**5. Ping antar WAN FortiGate (ping 10.0.12.2 & ping 10.0.13.2)**
-
-<!-- Tempel screenshot ping antar WAN di sini -->
-![ping antar WAN FortiGate](screenshots/m6-ping-wan.png)
 
 ---
 
@@ -375,47 +314,25 @@ Kedua site dihubungkan menggunakan **GRE Tunnel** antar FortiGate, dengan **OSPF
 
 ### Bukti Switch Surabaya
 
-**1. `show vlan brief`**
+**1. `show vlan brief` dan  `show interfaces trunk`**
 
-<!-- Tempel screenshot show vlan brief di sini -->
-![show vlan brief Surabaya](screenshots/m7-switch-vlan-brief.png)
+<img width="1480" height="1234" alt="Screenshot 2026-06-14 015851" src="https://github.com/user-attachments/assets/c4fc5745-248a-4b4b-8ca5-ed3026dfb0a5" />
 
-**2. `show interfaces trunk`**
-
-<!-- Tempel screenshot show interfaces trunk di sini -->
-![show interfaces trunk Surabaya](screenshots/m7-switch-trunk.png)
 
 ### Bukti MikroTik Surabaya
 
-**3. `/ip address print`**
+**3. `/ip address print
+/ip dhcp-server print
+/ip pool print
+/ip route print`**
 
-<!-- Tempel screenshot /ip address print di sini -->
-![ip address print](screenshots/m7-mt-ip-address.png)
+<img width="1048" height="1236" alt="Screenshot 2026-06-14 015914" src="https://github.com/user-attachments/assets/b7fe138a-42a9-4c07-8f05-ecd467c31f6c" />
 
-**4. `/ip dhcp-server print`**
 
-<!-- Tempel screenshot /ip dhcp-server print di sini -->
-![dhcp server print](screenshots/m7-mt-dhcp-server.png)
+**7. Client VLAN 30 mendapat IP DHCP dan Ping client Surabaya ke 8.8.8.8**
 
-**5. `/ip pool print`**
+<img width="1498" height="1262" alt="Screenshot 2026-06-14 015932" src="https://github.com/user-attachments/assets/6eafd58f-6c2e-4017-90bf-1704ce62222b" />
 
-<!-- Tempel screenshot /ip pool print di sini -->
-![ip pool print](screenshots/m7-mt-ip-pool.png)
-
-**6. `/ip route print`**
-
-<!-- Tempel screenshot /ip route print di sini -->
-![ip route print](screenshots/m7-mt-ip-route.png)
-
-**7. Client VLAN 30 mendapat IP DHCP**
-
-<!-- Tempel screenshot ip dhcp di VPCS di sini -->
-![DHCP client VLAN 30](screenshots/m7-vlan30-dhcp.png)
-
-**8. Ping client Surabaya ke 8.8.8.8**
-
-<!-- Tempel screenshot ping 8.8.8.8 dari VLAN30 di sini -->
-![ping internet dari Surabaya](screenshots/m7-vlan30-ping-internet.png)
 
 ---
 
@@ -427,41 +344,21 @@ Kedua site dihubungkan menggunakan **GRE Tunnel** antar FortiGate, dengan **OSPF
 
 **1. `get system interface physical`**
 
-<!-- Tempel screenshot get system interface physical di sini -->
-![get system interface physical](screenshots/m8-interface-physical.png)
+<img width="1222" height="1226" alt="Screenshot 2026-06-14 020514" src="https://github.com/user-attachments/assets/eddaa106-3ae0-449b-b9bf-a7a1e8e7a75f" />
 
-**2. `get router info routing-table all`**
 
-<!-- Tempel screenshot routing table all di sini -->
-![routing table all](screenshots/m8-routing-table-all.png)
+**2. `get router info routing-table all` dan  Screenshot firewall policy**
 
-**3. Screenshot firewall policy (part 1 & 2)**
+<img width="1124" height="1234" alt="Screenshot 2026-06-14 020522" src="https://github.com/user-attachments/assets/b7d471ad-29a1-4f87-a658-fe74b5707a5e" />
+<img width="2200" height="1244" alt="Screenshot 2026-06-14 020528" src="https://github.com/user-attachments/assets/50d58c0d-2e01-43b8-a5c6-0fd2e88ce31f" />
 
-<!-- Tempel screenshot firewall policy part 1 di sini -->
-![firewall policy part 1](screenshots/m8-firewall-policy-1.png)
+**4. `ping 8.8.8.8
+ping IP tunnel Jakarta
+get router info ospf neighbor
+get router info routing-table ospf`**
 
-<!-- Tempel screenshot firewall policy part 2 di sini -->
-![firewall policy part 2](screenshots/m8-firewall-policy-2.png)
+<img width="1038" height="1246" alt="Screenshot 2026-06-14 020534" src="https://github.com/user-attachments/assets/ec846d39-e769-41be-ad95-ba35b1f5191d" />
 
-**4. `execute ping 8.8.8.8`**
-
-<!-- Tempel screenshot ping 8.8.8.8 di sini -->
-![ping 8.8.8.8](screenshots/m8-ping-internet.png)
-
-**5. `execute ping 172.16.0.1` (IP tunnel Jakarta)**
-
-<!-- Tempel screenshot ping tunnel Jakarta di sini -->
-![ping tunnel Jakarta](screenshots/m8-ping-tunnel.png)
-
-**6. `get router info ospf neighbor`**
-
-<!-- Tempel screenshot ospf neighbor di sini -->
-![ospf neighbor](screenshots/m8-ospf-neighbor.png)
-
-**7. `get router info routing-table ospf`**
-
-<!-- Tempel screenshot routing table ospf di sini -->
-![routing table ospf](screenshots/m8-routing-table-ospf.png)
 
 ---
 
@@ -473,27 +370,24 @@ Kedua site dihubungkan menggunakan **GRE Tunnel** antar FortiGate, dengan **OSPF
 
 **1. Ping WAN ke Surabaya & Ping IP Tunnel + OSPF neighbor + routing table OSPF**
 
-<!-- Tempel screenshot ping WAN JKT→SBY, ping tunnel, ospf neighbor, routing table di sini -->
-![verifikasi FortiGate Jakarta](screenshots/m9-jkt-verify.png)
+<img width="1066" height="1240" alt="Screenshot 2026-06-14 020541" src="https://github.com/user-attachments/assets/ae13e55e-4003-40c1-83dd-9bd848b324cc" />
 
 ### Bukti FortiGate Surabaya
 
 **2. Ping WAN ke Jakarta & Ping IP Tunnel + OSPF neighbor + routing table OSPF**
 
-<!-- Tempel screenshot ping WAN SBY→JKT, ping tunnel, ospf neighbor, routing table di sini -->
-![verifikasi FortiGate Surabaya](screenshots/m9-sby-verify.png)
+<img width="990" height="1214" alt="Screenshot 2026-06-14 020548" src="https://github.com/user-attachments/assets/8a3098f5-95b2-4e05-a58f-67355b3d4952" />
 
 ### Ping Antar Client
 
 **3. Ping dari VLAN10 (Client Jakarta) ke VLAN30 (Client Surabaya)**
 
-<!-- Tempel screenshot ping VLAN10 → VLAN30 di sini -->
-![ping Jakarta ke Surabaya](screenshots/m9-ping-jkt-to-sby.png)
+<img width="2880" height="1140" alt="Screenshot 2026-06-14 020620" src="https://github.com/user-attachments/assets/8b7e0aee-0d9c-4c8a-b99b-4b0cf2a7529f" />
+
 
 **4. Ping dari VLAN30 (Client Surabaya) ke VLAN10 (Client Jakarta)**
+<img width="2880" height="1010" alt="Screenshot 2026-06-14 020628" src="https://github.com/user-attachments/assets/2007b0e2-8839-4487-895d-a860545d8c7d" />
 
-<!-- Tempel screenshot ping VLAN30 → VLAN10 di sini -->
-![ping Surabaya ke Jakarta](screenshots/m9-ping-sby-to-jkt.png)
 
 ---
 
@@ -502,44 +396,39 @@ Kedua site dihubungkan menggunakan **GRE Tunnel** antar FortiGate, dengan **OSPF
 ### Bukti
 
 **1. Client VLAN10 Jakarta — IP DHCP dari Ubuntu Server**
+<img width="2880" height="1128" alt="Screenshot 2026-06-14 020634" src="https://github.com/user-attachments/assets/d11e421e-6709-4c0c-9ae6-f9de2d32321e" />
 
-<!-- Tempel screenshot ip dhcp VLAN10 di sini -->
-![DHCP VLAN10](screenshots/m10-vlan10-dhcp.png)
 
 **2. Client VLAN20 Jakarta — IP DHCP dari Ubuntu Server**
+<img width="2880" height="426" alt="Screenshot 2026-06-14 020640" src="https://github.com/user-attachments/assets/d458ce29-3d87-4715-9eb7-511214e14205" />
 
-<!-- Tempel screenshot ip dhcp VLAN20 di sini -->
-![DHCP VLAN20](screenshots/m10-vlan20-dhcp.png)
 
 **3. Client Jakarta ping internet (8.8.8.8)**
 
-<!-- Tempel screenshot ping 8.8.8.8 dari Jakarta di sini -->
-![ping internet Jakarta](screenshots/m10-jkt-ping-internet.png)
+<img width="1996" height="1244" alt="Screenshot 2026-06-14 020647" src="https://github.com/user-attachments/assets/35561c56-02c7-494b-a82d-13cc3845893a" />
+
 
 **4. Client Surabaya ping internet (8.8.8.8)**
+<img width="2030" height="1238" alt="Screenshot 2026-06-14 020654" src="https://github.com/user-attachments/assets/95e58236-3ec9-4702-acb2-9eb1cbdd629f" />
 
-<!-- Tempel screenshot ping 8.8.8.8 dari Surabaya di sini -->
-![ping internet Surabaya](screenshots/m10-sby-ping-internet.png)
+
 
 **5. Ping antar site**
 
-<!-- Tempel screenshot ping antar site di sini -->
-![ping antar site](screenshots/m10-ping-antar-site.png)
+<img width="1986" height="1222" alt="Screenshot 2026-06-14 020700" src="https://github.com/user-attachments/assets/3d25d47c-df68-4fb9-b800-ec2804193980" />
+
 
 **6. Akses Web Server Jakarta dari Tinycore Surabaya (`http://192.168.60.10`)**
+<img width="1240" height="1246" alt="Screenshot 2026-06-14 020705" src="https://github.com/user-attachments/assets/47548a24-70ed-47c5-bf22-802dfe0f6efc" />
 
-<!-- Tempel screenshot akses web server di sini -->
-![akses web server Jakarta](screenshots/m10-webserver-access.png)
 
 **7. `get router info routing-table ospf` — FortiGate Jakarta**
+<img width="2880" height="1254" alt="Screenshot 2026-06-14 020712" src="https://github.com/user-attachments/assets/19912c9c-be94-4f09-baf9-8dbce957ced5" />
 
-<!-- Tempel screenshot routing table ospf FortiGate Jakarta di sini -->
-![routing table ospf Jakarta](screenshots/m10-ospf-table-jkt.png)
 
 **8. `get router info routing-table ospf` — FortiGate Surabaya**
+<img width="2880" height="1212" alt="Screenshot 2026-06-14 020718" src="https://github.com/user-attachments/assets/90971471-aae5-404f-8554-c65962a5435b" />
 
-<!-- Tempel screenshot routing table ospf FortiGate Surabaya di sini -->
-![routing table ospf Surabaya](screenshots/m10-ospf-table-sby.png)
 
 **9. Analisis Singkat Jalur Traffic Jakarta ke Surabaya**
 
@@ -587,87 +476,6 @@ Client Surabaya → Web Server Jakarta
 
 ---
 
-## ⚙️ Urutan Pengerjaan
-
-```
-1. Modul 1  — Cisco Switch Jakarta      (VLAN + Trunk)
-2. Modul 2  — Cisco Router Jakarta      (Sub-if + VRRP + DHCP Relay)
-3. Modul 3  — MikroTik Jakarta          (VLAN + VRRP + DHCP Relay)
-4. Modul 4  — Ubuntu Server Jakarta     (ISC-DHCP + Nginx)
-              ⚠️ Install paket dulu di network management, lalu pindah ke Switch
-5. Modul 5  — FortiGate Jakarta         (Interface + NAT + GRE + OSPF)
-6. Modul 6  — MikroTik ISP             (IP + NAT Masquerade)
-7. Modul 7  — Switch & MikroTik SBY    (VLAN 30/40 + DHCP)
-8. Modul 8  — FortiGate Surabaya        (Interface + NAT + GRE + OSPF)
-9. Modul 9  — Verifikasi GRE + OSPF    (Ping tunnel + OSPF neighbor Full)
-10. Modul 10 — Pengujian Akhir          (End-to-end connectivity)
-```
-
----
-
-## 📁 Struktur Repositori
-
-```
-📦 enterprise-network-hq-branch
- ┣ 📜 README.md
- ┣ 📂 screenshots/
- ┃  ┣ topology.png
- ┃  ┣ m1-show-vlan-brief.png
- ┃  ┣ m1-show-interfaces-trunk.png
- ┃  ┣ m2-show-ip-int-brief.png
- ┃  ┣ m2-show-vrrp-brief.png
- ┃  ┣ m2-subinterface-config.png
- ┃  ┣ m2-ping-fortigate.png
- ┃  ┣ m3-ip-address-print.png
- ┃  ┣ m3-vrrp-print.png
- ┃  ┣ m3-dhcp-relay-print.png
- ┃  ┣ m3-ip-route-print.png
- ┃  ┣ m3-ping-fortigate.png
- ┃  ┣ m4-ip-a.png
- ┃  ┣ m4-ip-route.png
- ┃  ┣ m4-dhcpd-conf.png
- ┃  ┣ m4-ping-internet.png
- ┃  ┣ m5-interface-physical.png
- ┃  ┣ m5-routing-table-all.png
- ┃  ┣ m5-firewall-policy.png
- ┃  ┣ m5-ping-internet.png
- ┃  ┣ m5-ping-tunnel.png
- ┃  ┣ m5-ospf-neighbor.png
- ┃  ┣ m5-routing-table-ospf.png
- ┃  ┣ m6-ip-address-print.png
- ┃  ┣ m6-ip-route-print.png
- ┃  ┣ m6-firewall-nat.png
- ┃  ┣ m6-ping-internet.png
- ┃  ┣ m6-ping-wan.png
- ┃  ┣ m7-switch-vlan-brief.png
- ┃  ┣ m7-switch-trunk.png
- ┃  ┣ m7-mt-ip-address.png
- ┃  ┣ m7-mt-dhcp-server.png
- ┃  ┣ m7-mt-ip-pool.png
- ┃  ┣ m7-mt-ip-route.png
- ┃  ┣ m7-vlan30-dhcp.png
- ┃  ┣ m7-vlan30-ping-internet.png
- ┃  ┣ m8-interface-physical.png
- ┃  ┣ m8-routing-table-all.png
- ┃  ┣ m8-firewall-policy-1.png
- ┃  ┣ m8-firewall-policy-2.png
- ┃  ┣ m8-ping-internet.png
- ┃  ┣ m8-ping-tunnel.png
- ┃  ┣ m8-ospf-neighbor.png
- ┃  ┣ m8-routing-table-ospf.png
- ┃  ┣ m9-jkt-verify.png
- ┃  ┣ m9-sby-verify.png
- ┃  ┣ m9-ping-jkt-to-sby.png
- ┃  ┣ m9-ping-sby-to-jkt.png
- ┃  ┣ m10-vlan10-dhcp.png
- ┃  ┣ m10-vlan20-dhcp.png
- ┃  ┣ m10-jkt-ping-internet.png
- ┃  ┣ m10-sby-ping-internet.png
- ┃  ┣ m10-ping-antar-site.png
- ┃  ┣ m10-webserver-access.png
- ┃  ┣ m10-ospf-table-jkt.png
- ┗  ┗ m10-ospf-table-sby.png
-```
 
 ---
 
